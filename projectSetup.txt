@@ -1,0 +1,38 @@
+
+# Setting up System.
+
+1. Create Git Repo
+2. Create dockerhub access token
+3. Git Repo Settings -> Actions -> Add access token with 
+    i. Name: DOKERHUB_USER & Key: ankurRangi (dockerhub username)
+    ii. Name: DOKERHUB_TOKEN & Key: (dockerhub access token)
+4. Clone Git 
+
+
+# Adding Requirements
+
+5. Create requirements.txt
+6. Create Dockerfile
+7. Create dockerignore
+8. [CMD] Test building docker image -> "docker build ."
+9. Create docker-compose.yml
+10. [CMD] Build the container with the yml servives file -> "docker-compose build"
+11. Create requirements.dev.txt and add flake8 (Linting and Test for basic errors and inconsistancies). 
+    We only need this requirement for checking errors and not necessary for deploying so we use it for dev requirements.
+12. Add "Dev:true" in servives for yml file to access the dev settings.
+13. Add args dev=flase in dockerfile to keep it as default.
+14. [CMD] Run docker via yml file - "docker-compose build" 
+15. Create .flake8 file in "app" folder to add the files needed to be ignored for linting.
+16. [CMD] Run flake8 -> docker-compose run --rm app sh -c "flake8"
+
+
+# Django Project (Using docker)
+
+17. [CMD] Create django project using docker - docker-compose run --rm app sh -c "django-admin startproject app ."
+18. [CMD] Start your django server, "docker compose up"
+
+
+# Github Actions
+
+19. Create a root folder ".github/workflows"
+20. Create checks.yml file.

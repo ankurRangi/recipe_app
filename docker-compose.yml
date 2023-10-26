@@ -1,0 +1,20 @@
+# Yml file to start the build of docker container via these services not but direct command.
+version: "3.9"
+
+services:
+  # Service Name
+  app:
+    build:
+      # building Current Directory (Current dir)
+      context: .
+      # For linting purposes.
+      args:
+        - DEV=true
+    # Ports 8000 on local machine to 8000 on docker container
+    ports:
+      - "8000:8000"
+    # Mapping dirs from systems to doc container
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
