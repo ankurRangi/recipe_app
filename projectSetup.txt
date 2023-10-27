@@ -36,3 +36,4 @@
 
 19. Create a root folder ".github/workflows"
 20. Create checks.yml file.
+21. [CMD] Run the command to check for Github Actions and linting - docker-compose run app sh -c "python manage.py test"
