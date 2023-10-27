@@ -44,8 +44,27 @@
 22. Open docker-compose.yml file and add the database (postgres) details in it.
 23. [CMD] Run "docker compose up" to check it is working.
 
+
 # Pyscopg2 (Postgres Adapter)
 
 24. Add custom libraries to help in installing Psycopg2, add libraries in dockerfiler and delete them after installation.
 25. Add the psycopg2 in requirements.txt file to install the adaptor for database setup.
-25. [CMD] Run "docker compose build". To rebuild the container with new libraries.
+26. [CMD] Run "docker compose build". To rebuild the container with new libraries.
+
+
+# Setting up our Postgres DB with Django Project
+
+27. Open settings.py file and add the new database details we created in dockerfile.
+28. Delete the automatically create sqlite db from django project.
+29. Now to avoid race conditions, we need to check for DB to start before the django project.
+    
+    a. Add a test for wait_for_db by creating a new django app "core". Delete tests.py and views.py file. 
+    b. Create tests folder and add __int__.py file for python package.
+    c. Under core app, Create folder management -> commands -> wait_for_db.py (each folder will have __init__.py file)
+    d. Write the test first to test if the db is ready and then if any errors are arising.
+    e. Write the function to test the db availablity.
+    f. [CMD] Run the command - docker-compose run --rm app sh -c "python manage.py test"
+    g. [CMD] OR you may check directly with docker-compose run --rm app sh -c "python manage.py wait_for_db"
+    h. [CMD] check for linting as well, docker-compose run --rm app sh -c "python manage.py wait_for_db and flake8"
+
+30. 
