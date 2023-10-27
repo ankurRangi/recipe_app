@@ -32,11 +32,18 @@ ARG DEV=false
     # System gets compramised, the attacker will have limited access of that of the user.
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
+    # Adding libraries to help install psycopg2 (postgresql-client, build-base, postgresql-dev, musl-dev)
+    apk add --update --no-cache postgresql-client && \
+    # create a virtual space to install the temparory libraries (build-base, postgresql-dev, musl-dev)
+    apk add --update --no-cache --virtual .tmp-build-deps \
+        build-base postgresql-dev musl-dev && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = "true" ]; \
         then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
     rm -rf /tmp && \
+    # Now delete the virtual space.
+    apk del .tmp-build-deps && \
     adduser \
         --disabled-password \
         --no-create-home \
