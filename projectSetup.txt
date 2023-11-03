@@ -77,4 +77,8 @@
 33. Refer test_models.py
 34. Run the tests, docker-compose run --rm app sh -c "python manage.py test && flake8"
 35. Ensure email is properly entered and not some emply string, add validation to email field in the manager.
-36. 
+
+
+# Admin Interface
+
+36. Create test_admin.py file for further tests.
