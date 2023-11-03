@@ -28,7 +28,7 @@
 
 # Django Project (Using docker)
 
-17. [CMD] Create django project using docker - docker-compose run --rm app sh -c "django-admin startproject app ."
+17. [CMD] Create django project using docker - docker-compose run --rm app sh -c "django-admin startproject app ." (. is important)
 18. [CMD] Start your django server, "docker compose up"
 
 
@@ -36,7 +36,7 @@
 
 19. Create a root folder ".github/workflows"
 20. Create checks.yml file.
-21. [CMD] Run the command to check for Github Actions and linting - docker-compose run app sh -c "python manage.py test"
+21. [CMD] Run the command to check for Github Actions and linting -> docker-compose run --rm app sh -c "python manage.py test"
 
 
 # Posgres Database Setup/Service
@@ -67,4 +67,14 @@
     g. [CMD] OR you may check directly with docker-compose run --rm app sh -c "python manage.py wait_for_db"
     h. [CMD] check for linting as well, docker-compose run --rm app sh -c "python manage.py wait_for_db and flake8"
 
-30. 
+30. Add the wait_for_db and migrate command in docker-compose.yml file and wait_for_db in checks.yml file.
+
+
+# Models
+
+31. Create a User Model with email as the username and create your custom UserManager()
+32. Create Test folder (with __init__.py file) under core app created, with all the file names starting with "test_"
+33. Refer test_models.py
+34. Run the tests, docker-compose run --rm app sh -c "python manage.py test && flake8"
+35. Ensure email is properly entered and not some emply string, add validation to email field in the manager.
+36. 

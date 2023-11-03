@@ -12,7 +12,7 @@ from django.core.management.base import BaseCommand
 class Command(BaseCommand):
     """Django command to wait for database"""
 
-    def handle(self, *args, **kwargs):
+    def handle(self, *args, **extra_fields):
         """Entry point for command"""
         self.stdout.write('Waiting for the database...')
         db_up = False
