@@ -82,3 +82,17 @@
 # Admin Interface
 
 36. Create test_admin.py file for further tests.
+37. [CMD] Create a superuser, docker-compose run --rm app sh -c "python manage.py createsuperuser"
+38. Setup admin.py file to register model and add the USerAdmin class to customize the page with specific details to be shown and 
+    Add basic details while adding a new user though our custom admin since earlier we were only creating User/SuperUser with just
+    Email and Password (sometimes User Name), now inorder make the "Add New User" page workable, we need to setup the Admin class
+    and mention the extra fields via Admin package.
+
+
+# Swagger (API Documentation)
+
+39. Install "drf-spectacular" module in requirements.txt
+40. Add apps to settings.py file under core app,
+    a. rest_framework
+    b. drf-spectacular
+41. Add REST_FRAMEWORK default schema class, 'drf-spectacular.openapi.AutoSchema'

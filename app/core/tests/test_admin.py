@@ -24,7 +24,7 @@ class AdminSiteTest(TestCase):
             password="testuser123",
             name="Test User"
         )
-    
+
     def test_user_list(self):
         """Test the user listed on the page."""
         url = reverse('admin:core_user_changelist')

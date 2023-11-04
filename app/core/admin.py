@@ -1,11 +1,12 @@
 """
-Django Admin Customization
+Django Admin Page Customization
 """
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
 from core import models
+
 
 class UserAdmin(BaseUserAdmin):
     """Define the admin pages for user"""
@@ -28,8 +29,10 @@ class UserAdmin(BaseUserAdmin):
     readonly_fields = ['last_login']
     add_fieldsets = (
         (None, {
-            'classes': ('wide',), # Not really needed just to make spaces in the form to add below details.
-            'fields':(
+            # Not really needed (classes) just to make spaces in the form
+            # to add below details
+            'classes': ('wide',),
+            'fields': (
                 'email',
                 'password1',
                 'password2',
