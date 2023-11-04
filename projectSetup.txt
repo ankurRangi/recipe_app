@@ -101,6 +101,11 @@
     the link "/api/schema" on top left to download the schema .yml file.
 
 
-# Building Recipe APIs
+# Building USER APIs
 
-44. 
+44. Create new App "user"
+45. [CMD] docker-compose run --rm app sh -c "python manage.py startapp user"
+46. Delete migrations, test.py, model.py and admin.py since all of those things will be under "core" app. 
+46. Add the app under Installed_Apps in settings.py. 
+47. Create a folder tests, start writing tests for the app, starting with "create user endpoint"
+48. 
