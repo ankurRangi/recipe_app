@@ -96,3 +96,11 @@
     a. rest_framework
     b. drf-spectacular
 41. Add REST_FRAMEWORK default schema class, 'drf-spectacular.openapi.AutoSchema'
+42. Add URL for swagger in urls.py file with drf_spectacular.veiws.
+43. [CMD] "docker-compose up" and hop on to "http://127.0.0.1:8000/api/docs/" and now you can see the documentation and SCHEMA with
+    the link "/api/schema" on top left to download the schema .yml file.
+
+
+# Building Recipe APIs
+
+44. 
