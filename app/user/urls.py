@@ -1,5 +1,5 @@
 """
-URLs/Enpoints mapping for the User APIs
+URLs/Endpoints mapping for the User APIs
 """
 
 from django.urls import path
