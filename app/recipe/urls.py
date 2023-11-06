@@ -12,6 +12,8 @@ from recipe import views
 router = DefaultRouter()
 router.register('recipes', views.RecipeViewSet)
 router.register('tags', views.TagViewSet)
+router.register('ingredients', views.IngredientViewSet)
+
 
 # """Viewset have all the endpoints along within
 #     including Get, Put, Patch, Delete.

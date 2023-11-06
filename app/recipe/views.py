@@ -14,9 +14,13 @@ from recipe.serializers import (
     RecipeSerializer,
     RecipeDetailSerializer,
     TagSerializer,
+    IngredientSerializer,
 )
 
 
+# ModelViewSet supports all methods (GET, PUT, PATCH, DELETE, POST),
+# but in some cases you may only need a handful of these. Using
+# GenericViewSet allows you to explicitly specify these.
 class RecipeViewSet(viewsets.ModelViewSet):
     """View for manage recipe apis"""
     serializer_class = RecipeDetailSerializer
@@ -42,15 +46,25 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
 # Just Adding the mixins.UpdateModelMixin class, it will
 # handle all the path/update requests automatically
-class TagViewSet(mixins.DestroyModelMixin,
-                 mixins.UpdateModelMixin,
-                 mixins.ListModelMixin,
-                 viewsets.GenericViewSet):
-    """Manage tags in the database."""
-    serializer_class = TagSerializer
-    queryset = models.Tag.objects.all()
+class BaseRecipeAttrViewSet(mixins.DestroyModelMixin,
+                            mixins.UpdateModelMixin,
+                            mixins.ListModelMixin,
+                            viewsets.GenericViewSet):
+    """Base viewset for recipe attributes."""
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user).order_by('-name')
+
+
+class TagViewSet(BaseRecipeAttrViewSet):
+    """Manage tags in the database."""
+    serializer_class = TagSerializer
+    queryset = models.Tag.objects.all()
+
+
+class IngredientViewSet(BaseRecipeAttrViewSet):
+    """Manage ingredients in the database"""
+    serializer_class = IngredientSerializer
+    queryset = models.Ingredient.objects.all()
