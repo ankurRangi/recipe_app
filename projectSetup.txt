@@ -109,3 +109,17 @@
 46. Add the app under Installed_Apps in settings.py. 
 47. Create a folder tests, start writing tests for the app, starting with "create user endpoint"
 48. 
+
+
+
+.
+.
+.
+.
+
+
+
+# Image API
+
+101. Install Pillow Library
+    a. 
